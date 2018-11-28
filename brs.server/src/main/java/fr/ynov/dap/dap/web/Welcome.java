@@ -31,6 +31,10 @@ public class Welcome {
 	
 	@RequestMapping("/")
 	public String welcome(ModelMap model, @RequestParam("userKey") String user) {
+		if (user == null ) {
+			model.addAttribute("content", "login"); 
+			return "index";
+		}
 		AppUser userRepo = repo.findByUserkey(user);
 		if (userRepo == null ) {
 			model.addAttribute("content", "login"); 

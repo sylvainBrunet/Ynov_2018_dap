@@ -105,6 +105,14 @@ public class AuthorizeController extends MicrosoftService {
     return "redirect:/?userKey="+userId;
   }
 }
+  @RequestMapping("/index")
+  public String index(HttpServletRequest request, Model model) {
+    HttpSession session = request.getSession();
+    session.invalidate();
+    model.addAttribute("content", "login"); 
+    return "redirect:/?userKey=";
+  }
+  
   
   @RequestMapping("/logout")
   public String logout(HttpServletRequest request, Model model) {
